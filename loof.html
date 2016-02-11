@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="shortcut icon" href="images/loof_logo.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+  <link rel="stylesheet" href="css/loof.css">
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  
+  <script src="scripts/init.js"></script>
+  <script src="scripts/uw_wrapper.js"></script>
+  <script src="scripts/profile.js"></script>
+  <script src="scripts/facebookwrapper.js"></script>
+  <script src="scripts/orderLoof.js"></script>
+</head>
+
+<body>
+  <!-- For the purpose of the Facebook API -->
+  <div id="fb-root"></div>
+
+  <!--First page creates the header and footer of the overall application -->
+  <div class="page" data-role="page" id="home">
+    <header id="constantheader-wrapper">
+      <div data-role="header" data-id="theconstantheader" class="ui-header ui-bar-a" role="banner" data-position="fixed" id="headerLook">
+      <a class="fbProfile" href="#profile" id="pPic" onClick="loadProfile()">Profile</a>
+      <h1>LOOF</h1>
+      <a href="#order" data-icon="comment" onClick="loadOrderPage()">Order</a>
+      </div>
+    </header>
+
+    <div data-role="main" class="ui-content">
+      <p class="title">Welcome to LOOF! <br>Where Students Deliver to Students</p>
+
+      <!-- Show the latest orders-->
+      <div id="myOrders"></div>
+      <div id="display"></div>
+    </div>
+  </div>
+
+  <!-- This page is shown when a specific order is selected from the home page. -->
+  <div class="page" data-role="page" id="orderDetails">
+    <div data-role="main" class="ui-content">
+      <!-- Data fields will be populated based on state from the JavaScript. -->
+      <h2 id="loadOrderNum"></h2>
+      <p id="loadOrderUser"></p>
+      <p id="loadOrderDeliver"><u> Delivered By:</u></p>
+      <p id="loadOrderRes"></p>
+      <p id="loadOrderMeal"></p>
+      <p id="loadOrderComments"></p>
+      <p id="loadOrderLocation"></p>
+      <p id="loadOrderTip"></p>
+      <!-- These data fields will be displayed at the correct state. -->
+      <p id="loadOrderContact" style="display:none"></p>
+      <br>
+      <div id="loadOrderRating" style="display:none">
+        <label for="slider-fill">Rating:</label>
+        <input type="range" name="slider-fill" id="rating" value="3" min="0" max="5" data-highlight="true"/>
+      </div>
+      <div style="display:none">
+        <input id="loadOrderState" value="-1"></input>
+        <input id="loadOrderID" value=""></input>
+      </div>
+
+      <button id="loadOrderChoice" onClick="pushState()"> Accept? </button>
+      <a href="#home" class="ui-btn">Home</a>
+    </div>
+  </div>
+
+  <!-- This page allows users to place an order on LOOF. -->
+  <div class="page" data-role="page" id="order">
+    <div data-role="main" class="ui-content">
+      <form name="loofOrder">
+        <div id="deliveryinfo">
+            <label for="restaurant" class="select">Restaurant:</label>
+            <select name="restaurant" id="restaurant">
+              <option value="" disabled selected>Choose Restaurant</option>
+            </select>
+
+            <label for="food">LOOF Order:</label>
+            <input type="search" name="food" id="food" value=""/>
+
+            <div data-role="fieldcontain">
+              <label for="select-choice-1" class="select">Location:</label>
+              <select name="select-choice-1" id="location-choice"></select>
+            </div>
+
+            <label for="slider-fill">Tip:</label>
+            <input type="range" name="slider-fill" id="tip" value="3" min="2" max="20" data-highlight="true" />
+
+            <div data-role="fieldcontain" class="ui-hide-label">
+              <label for="comments">Comments:</label>
+              <input type="text" name="comments" id="comments" placeholder="Enter Comments" value=""/>
+            </div>
+
+            <button id="submit" onClick="ajaxDBOrder()">Order</button>
+        </div>
+      </form>
+      <a href="#home" class="ui-btn">Home</a>
+    </div>
+  </div>
+
+  <!-- This page is the profile and shows the rating and user info from the database. -->
+  <div class="page" data-role="page" id="profile">
+    <div data-role="main" class="ui-content" style="background-color: #E4E4E4">
+      <div id="profileInfo">
+        <div id="largeProfile"></div>
+        <h1 id="userName" class="center"></h1>
+        <h4 id="ratingStars" class="center"></h4>
+      </div>
+      <form name="Profile" action="">
+        <label for="telephone">Phone Number:</label>
+        <input type="tel" id="phonenumber" placeholder="###-###-####" value=""/>
+        <button onClick="updatePhoneNumber()">Update</button>
+      </form>
+
+      <button id="logout" onClick="logoutDropImage()">Logout</button>
+      <a href="#home" class="ui-btn">Home</a>
+    </div>
+  </div>
+</body>
+
+</html>

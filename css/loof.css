@@ -1,0 +1,28 @@
+#pPic {
+    padding: 0px;
+    border: 0px;
+    height: 32px;
+    border-radius: 3.90625px;
+}
+#headerLook{
+  background-color: #990033;
+}
+#headerLook h1 {
+  color: #FFFFFF;
+}
+#largeProfile img
+{
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+.title{
+  text-align:center; 
+  font-size:13pt;
+}
+.center{
+  text-align:center;
+}
+.page{
+  background-color: #E4E4E4;
+}

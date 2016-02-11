@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="images/loof_logo.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+    <link rel="stylesheet" href="css/index_ht.css">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+      /*When page is loaded, check to see if the user has previously logged in.
+      If so, redirect them to the home page.*/
+      $(function() {
+        setTimeout(checkAlive(), 3000 );
+      });
+      function checkAlive() {
+        if(sessionStorage.getItem("profilePic") !== null) {
+          window.location = "http://mansci-ugdb.uwaterloo.ca/~e47wong/loof.html";
+        }
+      }
+    </script>
+    <script src="scripts/facebookwrapper.js"></script>
+  </head>
+
+  <!-- Display logo and allow the user to connect to Facebook through the API. -->
+  <body>
+    <div id="egyptian" data-role="page" data-url="/~e47wong/" tabindex="0" class="ui-page ui-page-theme-a ui-page-active" style="min-height: 667px;">
+      <img id="logo" src="images/loof_logo.png"></img>
+      <div id="fblogin">
+        <fb:login-button size="large" scope="public_profile" onlogin="checkLoginState();">
+          Connect with Facebook
+        </fb:login-button>
+      </div>
+      <!-- For the purpose of the Facebook API -->
+      <div id="fb-root"></div>
+    </div>
+  </body>
+</html>
