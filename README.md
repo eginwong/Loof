@@ -9,4 +9,4 @@ Linux, Apache, MySQL, PHP.
 
 ##Authors
 
-Motaz Alash-hab, Anuja Chokshi, Cheng Seong (Astor) Wong, Eric Wong
+Motaz Al-Ashhab, Anuja Chokshi, Cheng Seong (Astor) Wong, Eric Wong
